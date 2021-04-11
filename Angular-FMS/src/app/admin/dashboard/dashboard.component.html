@@ -1,0 +1,94 @@
+
+<mat-drawer-container
+[class.drawer-opened]="drawer.opened"
+class="example-container">
+<mat-drawer #drawer 
+  class="drawer" 
+  mode="side" 
+  opened="true">
+
+  <mat-toolbar class="header" >
+    <div style="padding: 0 0px;"><img mat-card-image src="../../../assets/img/sankalp.png"   alt="Random first slide" height="70" width="100%" style="object-fit: cover;"></div>
+    <mat-icon class="close"
+   >close</mat-icon>
+  </mat-toolbar>
+  <div class="contents">
+  
+    <br><br>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/admin/Dashboard" >
+          <mat-icon>home</mat-icon> <span class="nav-caption">Home</span>
+      </a>
+      <a mat-list-item routerLink="/admin/Enrollment" >
+          <mat-icon>note_add</mat-icon> <span class="nav-caption">Enrollment</span>   
+      </a>
+      <a mat-list-item routerLink="/admin/Billing" >
+        <mat-icon>attach_money</mat-icon><span class="nav-caption">Billing</span>
+     </a>
+     <a mat-list-item routerLink="/admin/Payments" >
+      <mat-icon>payment</mat-icon><span class="nav-caption">Payments</span>
+   </a>
+   <a mat-list-item routerLink="/admin/Sudent's" >
+    <mat-icon>people</mat-icon><span class="nav-caption">Sudent Info</span>
+ </a>
+  <a mat-list-item routerLink="/admin/Report" >
+    <mat-icon>report</mat-icon><span class="nav-caption">Report</span>
+  </a>
+  <a mat-list-item routerLink="/admin/PaymentReminder" (click)="drawer.close()">
+    <mat-icon>book_online</mat-icon><span class="nav-caption">Payment Reminder</span>
+  </a>
+
+      <a mat-list-item routerLink="/admin/AccountActions" >
+          <mat-icon>account_balance</mat-icon><span class="nav-caption">Account Actions</span>
+      </a>
+
+      <mat-expansion-panel (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false">
+  <mat-expansion-panel-header >
+ 
+       
+        <mat-panel-title>
+          <mat-icon>admin_panel_settings</mat-icon><span class="nav-caption">Configuration</span>
+        </mat-panel-title>
+  
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLink="/admin/FeesConfig" >  <mat-icon>payment</mat-icon><span class="nav-caption">Payments Configuration </span> </a>
+ 
+      </mat-expansion-panel>
+
+
+   
+
+    </mat-nav-list>
+  </div>
+ 
+</mat-drawer>
+
+<mat-toolbar class="main header">
+  <mat-icon
+    *ngIf="!drawer.opened"
+    (click)="drawer.toggle()">
+    menu
+  </mat-icon>
+  
+
+  <mat-toolbar color="accent">    
+    <span>{{header}}</span>    
+    <span class="demo-toolbar"></span>    
+    <button mat-button >Logout</button>    
+    
+  </mat-toolbar>    
+  
+  
+ 
+</mat-toolbar>
+
+<div class="main contents">
+  <router-outlet></router-outlet>
+</div>
+
+
+<mat-toolbar class="main footer">
+  Footer
+</mat-toolbar>
+</mat-drawer-container>

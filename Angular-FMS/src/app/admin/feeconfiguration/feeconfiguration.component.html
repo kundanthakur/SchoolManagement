@@ -1,0 +1,80 @@
+<div class="container">
+  
+    <div class="row">
+        <mat-card style="text-align: center;"> Fee Structure</mat-card>
+    </div>
+<br>
+    
+<form [formGroup]="templateform" (ngSubmit)="templateopener()">   
+        <div class="row">
+          <mat-form-field appearance="fill">
+          <mat-select formControlName="template" matInput required>
+          <mat-option  value="new">Add New Template</mat-option>
+            <mat-option *ngFor = "let templ of paymentconfidtata" [value] = "templ">{{templ.packagename}}</mat-option>
+          
+          </mat-select>
+          <mat-label>Select Template</mat-label>
+              
+            </mat-form-field>
+            <button style="margin-left: 2%;" type="button"  (click)="templateopener()" mat-flat-button color="primary"> Add New or Edit Existing template</button>
+        </div>
+         </form>
+        <form [formGroup]="feestructureform" (ngSubmit)="onSubmit()">   
+        <div class="row" *ngIf="this.NewTemplateVisible">
+          <mat-form-field appearance="fill" >
+            <input
+                formControlName="packagename"
+                matInput
+                placeholder="Template Nmae" required
+              />
+            </mat-form-field>
+            <button style="margin-left: 2%;" type="button" (click)="addQuantity()" mat-flat-button color="primary"> <mat-icon>plus_one</mat-icon> Add More</button>
+            </div>
+     
+      <table class="table table-bordered" formArrayName="paymentstructure">
+       
+          
+        <tr *ngFor="let quantity of paymentstructure().controls; let i=index" [formGroupName]="i">
+          <td>
+            <mat-form-field appearance="fill" >
+                <mat-label>Fee Type</mat-label>
+                  <input id="name" name="name"
+                formControlName="qty"
+                matInput
+                class="form-control"
+                placeholder="Fee Type" required
+              />
+            </mat-form-field>
+
+              
+          </td>
+          <td>
+
+            <mat-form-field appearance="fill" >
+                <mat-label>Fee Values</mat-label>
+                  <input id="name" name="name"
+                formControlName="price"
+                matInput
+                class="form-control"
+                placeholder="Fee Values" required
+              />
+            </mat-form-field>
+    </td>
+          <td>
+            <button mat-flat-button color="warn"  (click)="removeQuantity(i)">Remove</button>
+              
+          </td>
+        </tr>
+       
+
+      </table>
+      <div class="row" *ngIf="this.NewTemplateVisible">
+      <button  mat-flat-button color="primary" type="submit">Save Template </button>
+      <a mat-flat-button color="warn"  *ngIf="this.DeleteTemplate" (click)="deletetemplate()">Delete Template</a>
+   
+     </div> 
+     <br>
+    </form>
+    <br>  <br>
+    <br/>
+  </div>

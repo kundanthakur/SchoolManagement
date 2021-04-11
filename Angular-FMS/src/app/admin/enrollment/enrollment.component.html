@@ -1,0 +1,180 @@
+<div class="example-container">
+    <form (ngSubmit)="savestudent()" name="loginForm" [formGroup]="savestudentform" >
+      <br>
+      <div class="row">
+        <mat-card style="text-align: center;"> Student Information</mat-card>
+      </div>
+      <br>
+      <div class="row">
+      <mat-form-field appearance="fill" >
+        <mat-label>First Name</mat-label>
+        <input
+          formControlName="fname"
+          matInput
+          required
+        />
+        <mat-error *ngIf="!savestudentform.controls['fname'].valid">
+          First Name is required
+          </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" >
+        <mat-label>Middle Name</mat-label>
+        <input
+          formControlName="mname"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" >
+        <mat-label>Last Name</mat-label>
+        <input
+          formControlName="lname"
+          matInput
+           required
+        />
+        <mat-error *ngIf="!savestudentform.controls['lname'].valid">
+          Last Name is required
+          </mat-error>
+      </mat-form-field>
+
+      </div>
+
+      <div class="row" >
+          
+        <mat-form-field appearance="fill" >
+          <mat-label>Student Email</mat-label>
+          <input
+            formControlName="semail"
+            matInput
+             required
+          />
+          <mat-error *ngIf="!savestudentform.controls['semail'].valid">
+            Student Email is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" >
+          <mat-label>Student Mobile No</mat-label>
+          <input
+            formControlName="smobile"
+            matInput
+             required
+          />
+          <mat-error *ngIf="!savestudentform.controls['smobile'].valid">
+            Student Mobile No is required
+            </mat-error>
+        </mat-form-field>
+
+       
+        <mat-form-field appearance="fill">
+        <mat-select  [(value)]="selected" formControlName="sclass"
+        matInput required>
+          <mat-option>-- None --</mat-option>
+          <mat-option value="1">1</mat-option>
+          <mat-option value="2">2</mat-option>
+          <mat-option value="3">3</mat-option>
+          <mat-option value="4">4</mat-option>
+          <mat-option value="5">5</mat-option>
+          <mat-option value="6">6</mat-option>
+          <mat-option value="7">7</mat-option>
+          <mat-option value="8">8</mat-option>
+          <mat-option value="9">9</mat-option>
+          <mat-option value="10">10</mat-option>
+        </mat-select>
+        <mat-label>Select Class</mat-label>
+
+        <mat-error *ngIf="!savestudentform.controls['sclass'].valid">
+          Class is required
+          </mat-error>
+          
+      </mat-form-field>
+        </div>
+        <div class="row" >
+
+          <mat-form-field appearance="fill" >
+            <mat-label>Current School Name</mat-label>
+            <input
+              formControlName="cschool"
+              matInput
+              placeholder="Current School Name" required
+            />
+            <mat-error *ngIf="!savestudentform.controls['cschool'].valid">
+            Current School Name
+              </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" >
+            <mat-label>Admission Date</mat-label>
+          <input
+              formControlName="admidate"
+              matInput
+              placeholder="Admission Date" required
+            />
+            <mat-error *ngIf="!savestudentform.controls['admidate'].valid">
+           Admission Date
+              </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-select formControlName="feepack"  [(value)]="paymentdefault" matInput required>
+           
+              <mat-option *ngFor = "let templ of paymentconfidtata" [value] = "templ.id">{{templ.packagename}}</mat-option>
+            
+            </mat-select>
+            <mat-label>Select Fee Package</mat-label>
+            <mat-error *ngIf="!savestudentform.controls['feepack'].valid">
+              Fee Package
+                 </mat-error>
+             </mat-form-field>
+   </div>
+        <div class="row" >
+
+          <mat-form-field appearance="fill" >
+            <mat-label>Parent Name</mat-label>
+            <input
+              formControlName="pname"
+              matInput
+              placeholder="Parent Name" required
+            />
+            <mat-error *ngIf="!savestudentform.controls['pname'].valid">
+              Parent Name is required
+              </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" >
+            <mat-label>Parent Mobile No</mat-label>
+            <input
+              formControlName="pmobile"
+              matInput
+               required
+            />
+            <mat-error *ngIf="!savestudentform.controls['pmobile'].valid">
+              Parent Mobile No is required
+              </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" >
+            <mat-label>Parent EmailId</mat-label>
+            <input
+              formControlName="pemail"
+              matInput
+            
+            />
+         
+          </mat-form-field>
+
+
+
+
+      
+      </div>
+
+  
+ <button type="submit" style="margin-right: 1%;" mat-flat-button color="primary">Save</button>      
+ <button mat-flat-button color="warn" (click)="clearform()">clear</button>    
+    </form>
+    <br><br>
+  </div>
+
+  

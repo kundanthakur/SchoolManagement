@@ -1,0 +1,10 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body { 
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+}
+.mat-toolbar-single-row {
+  
+  padding: 0 0px;
+}
